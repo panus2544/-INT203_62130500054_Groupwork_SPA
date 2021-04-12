@@ -1,0 +1,16 @@
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode", "userId": 1 },
+    { "id": 2, "title": "backend-server", "author": "panus2544", "userId": 1 }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 },
+    { "id": 2, "body": "some comment 2", "postId": 1 },
+    { "id": 3, "body": "some comment 3", "postId": 2 }
+  ],
+  "users": [
+    { "id": 1, "username": "admin", "password": "1234" },
+    { "id": 2, "username": "user", "password": "6789" }
+  ],
+  "db": []
+}
