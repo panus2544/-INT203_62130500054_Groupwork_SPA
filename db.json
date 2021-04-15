@@ -1,7 +1,7 @@
 {
   "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode", "userId": 1 },
-    { "id": 2, "title": "backend-server", "author": "panus2544", "userId": 1 }
+    { "id": 1, "title": "8:00a", "author": "typicode", "userId": 1 },
+    { "id": 2, "title": "8:15a", "author": "panus2544", "userId": 1 }
   ],
   "comments": [
     { "id": 1, "body": "some comment", "postId": 1 },
@@ -11,6 +11,14 @@
   "users": [
     { "id": 1, "username": "admin", "password": "1234" },
     { "id": 2, "username": "user", "password": "6789" }
+  ],
+  "timelines": [
+    { "id": 1, "userId": 1  },
+    { "id": 2, "userId": 1  }
+  ],
+  "timelinedetails": [
+    { "id": 1, "userId": 1  },
+    { "id": 2, "userId": 1  }
   ],
   "db": []
 }

@@ -1,16 +1,24 @@
 <template>
-  <div class="about">
-    <h1 class="bg-sea">This is an {{ namePage }}</h1>
-    <ul v-for="post in posts" :key="post.id">
-      <li>{{ post.title }} :: author {{ post.author }}</li>
-    </ul>
+  <!-- component -->
+  <div class="container">
+    <div class="flex flex-col grid-cols-9 p-2 mx-auto md:grid text-blue-50">
+      <timeline />
+      <timeline />
+      <timeline />
+      <timeline />
+    </div>
   </div>
 </template>
-
+<style scoped>
+</style>
 <script>
+import Timeline from "../components/Timeline.vue";
 const axios = require("axios").default;
 export default {
   name: "About",
+  components: {
+    Timeline,
+  },
   data() {
     return {
       namePage: "About Page",
