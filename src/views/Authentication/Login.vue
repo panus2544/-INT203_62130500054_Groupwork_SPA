@@ -60,7 +60,7 @@ export default {
             localStorage.setItem("user", parsed);
             scope.$router.push({ name: "Dashboard" });
             console.log("🚀 ~ file: Login.vue ~ line 55 ~ user ~ user", user);
-          }else{
+          } else {
             console.log("🚀 Not found user");
           }
         })

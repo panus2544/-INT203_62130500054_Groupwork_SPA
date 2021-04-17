@@ -1,45 +1,51 @@
 {
-  "posts": [
+  "categories": [
     {
       "id": 1,
-      "title": "17:00 am",
-      "author": "typicode",
+      "name": "Food",
+      "amount": 1,
       "userId": 1
     },
     {
       "id": 2,
-      "title": "14:00 am",
-      "author": "panus2544",
+      "name": "Delivery",
+      "amount": 2,
       "userId": 1
     },
     {
       "id": 3,
-      "title": "15:00 am",
-      "author": "panus2544",
+      "name": "Other",
+      "amount": 1,
       "userId": 1
     },
     {
       "id": 4,
-      "title": "11:00 am",
-      "author": "panus2544",
+      "name": "Lineman",
+      "amount": 1,
+      "userId": 1
+    },
+    {
+      "id": 5,
+      "name": "Grab",
+      "amount": 1,
       "userId": 1
     }
   ],
-  "comments": [
+  "transactions": [
     {
       "id": 1,
       "body": "some comment",
-      "postId": 1
+      "categoryId": 1
     },
     {
       "id": 2,
       "body": "some comment 2",
-      "postId": 1
+      "categoryId": 1
     },
     {
       "id": 3,
       "body": "some comment 3",
-      "postId": 2
+      "categoryId": 2
     }
   ],
   "users": [
