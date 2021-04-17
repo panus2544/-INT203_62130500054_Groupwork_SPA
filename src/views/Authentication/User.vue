@@ -24,11 +24,12 @@
                   class="w-full px-2 py-1 mr-3 text-3xl leading-tight text-center text-white bg-transparent border-none appearance-none focus:outline-none"
                   type="text"
                   placeholder="Enter User Name"
+                  v-model="username"
                 />
               </div>
               <button
                 class="px-6 py-3 mt-6 text-black bg-gray-200 rounded-full"
-                @click="test"
+                @click="next()"
               >
                 Next
               </button>
@@ -43,13 +44,17 @@
 <script>
 export default {
   name: "User",
+  data() {
+    return {
+      username: "",
+    };
+  },
   methods: {
-    test() {
-      this.$emit("whenClick");
+    next() {
+      this.$emit("whenNext", this.username);
     },
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>

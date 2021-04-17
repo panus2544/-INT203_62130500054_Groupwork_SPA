@@ -5,7 +5,7 @@
     >
       <div class="container h-screen max-w-full overflow-hidden shadow-lg">
         <div class="flex flex-col">
-          <div class="flex flex-col justify-center w-full h-32">
+          <div class="flex flex-col justify-center w-full h-24">
             <div class="block w-full text-3xl text-center text-gray-200">
               Pass Code
             </div>
@@ -27,9 +27,16 @@
                     class="w-full px-2 py-1 mr-3 text-3xl leading-tight text-center text-white bg-transparent border-none appearance-none focus:outline-none"
                     type="number"
                     placeholder="Enter Pass Code"
+                    v-model="passcode"
                   />
                 </div>
-                <NumPad />
+                <NumPad @when-touch="showNumber" />
+                <button
+                  class="px-6 py-3 mt-4 text-black bg-gray-200 rounded-full"
+                  @click="back"
+                >
+                  Back
+                </button>
               </div>
             </div>
           </div>
@@ -38,16 +45,44 @@
     </div>
   </div>
 </template>
-  <script>
-import NumPad from "@/components/Authentication/NumPad.vue";
+<script>
+import NumPad from "@/components/NumPad.vue";
 export default {
   name: "PassCode",
   components: {
     NumPad,
   },
+  data() {
+    return {
+      passcode: null,
+    };
+  },
+  methods: {
+    back() {
+      this.$emit("whenBack");
+    },
+    showNumber(number) {
+      if (this.passcode == null || Number.isNaN(this.passcode)) {
+        this.passcode = number;
+      } else {
+        var numberAsString = this.passcode + "";
+        if (number == 11) {
+          this.passcode = numberAsString.substring(
+            0,
+            numberAsString.length - 1
+          );
+        } else if (number == 12) {
+          console.log("พอเหอะ หยอก หยอก");
+          this.$emit("whenFinish", parseInt(this.passcode));
+        } else {
+          this.passcode = numberAsString + number;
+        }
+      }
+    },
+  },
 };
 </script>
-  <style>
+<style>
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -60,4 +95,3 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 </style>
-  

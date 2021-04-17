@@ -4,16 +4,19 @@
       <div class="flex text-3xl">
         <div
           class="flex items-center justify-center w-1/3 h-16 px-2 py-2 my-auto rounded-full cursor-pointer hover:bg-green-800"
+          @click="touch(1)"
         >
           1
         </div>
         <div
           class="flex items-center justify-center w-1/3 h-16 px-2 py-2 my-auto rounded-full cursor-pointer hover:bg-green-800"
+          @click="touch(2)"
         >
           2
         </div>
         <div
           class="flex items-center justify-center w-1/3 h-16 px-2 py-2 my-auto rounded-full cursor-pointer hover:bg-green-800"
+          @click="touch(3)"
         >
           3
         </div>
@@ -23,16 +26,19 @@
       <div class="flex -mx-2 text-3xl">
         <div
           class="flex items-center justify-center w-1/3 h-16 px-2 py-2 my-auto rounded-full cursor-pointer hover:bg-green-800"
+          @click="touch(4)"
         >
           4
         </div>
         <div
           class="flex items-center justify-center w-1/3 h-16 px-2 py-2 my-auto rounded-full cursor-pointer hover:bg-green-800"
+          @click="touch(5)"
         >
           5
         </div>
         <div
           class="flex items-center justify-center w-1/3 h-16 px-2 py-2 my-auto rounded-full cursor-pointer hover:bg-green-800"
+          @click="touch(6)"
         >
           6
         </div>
@@ -42,16 +48,19 @@
       <div class="flex -mx-2 text-3xl">
         <div
           class="flex items-center justify-center w-1/3 h-16 px-2 py-2 my-auto rounded-full cursor-pointer hover:bg-green-800"
+          @click="touch(7)"
         >
           7
         </div>
         <div
           class="flex items-center justify-center w-1/3 h-16 px-2 py-2 my-auto rounded-full cursor-pointer hover:bg-green-800"
+          @click="touch(8)"
         >
           8
         </div>
         <div
           class="flex items-center justify-center w-1/3 h-16 px-2 py-2 my-auto rounded-full cursor-pointer hover:bg-green-800"
+          @click="touch(9)"
         >
           9
         </div>
@@ -61,6 +70,7 @@
       <div class="flex -mx-2 text-3xl">
         <div
           class="flex items-center justify-center w-1/3 h-16 px-2 py-2 my-auto rounded-full cursor-pointer hover:bg-green-800"
+          @click="touch(11)"
         >
           <div class="px-10 py-2">
             <svg
@@ -80,11 +90,13 @@
         </div>
         <div
           class="flex items-center justify-center w-1/3 h-16 px-2 py-2 my-auto rounded-full cursor-pointer hover:bg-green-800"
+          @click="touch(0)"
         >
           0
         </div>
         <div
           class="flex items-center justify-center w-1/3 h-16 px-2 py-2 my-auto rounded-full cursor-pointer hover:bg-green-800"
+          @click="touch(12)"
         >
           <div class="px-10 py-2">
             <svg
@@ -110,8 +122,15 @@
 <script>
 export default {
   name: "NumPad",
+  data() {
+    return {};
+  },
+  methods: {
+    touch(number) {
+      this.$emit("when-touch", number);
+    },
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>

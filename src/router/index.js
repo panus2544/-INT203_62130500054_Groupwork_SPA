@@ -33,8 +33,23 @@ const routes = [
 ];
 
 const router = createRouter({
+  mode: "hash",
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (
+    to.name !== "Login" &&
+    to.name !== "Home" &&
+    !localStorage.getItem("user")
+  ) {
+    next({ name: "Login" });
+  } else if (to.name == "Login" && localStorage.getItem("user")) {
+    next({ name: "Dashboard" });
+  } else {
+    next();
+  }
 });
 
 export default router;

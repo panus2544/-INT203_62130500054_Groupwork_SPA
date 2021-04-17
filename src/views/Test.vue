@@ -26,7 +26,6 @@
             href="."
             class="flex items-center justify-center w-full h-16 px-6 focus:text-orange-500"
           >
-          
             <svg
               class="w-5 h-5"
               xmlns="http://www.w3.org/2000/svg"
@@ -48,8 +47,6 @@
             </svg>
             InboxInboxInbox
           </a>
-          
-         
         </li>
 
         <li class="hover:bg-gray-100">
