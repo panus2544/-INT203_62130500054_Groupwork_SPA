@@ -127,8 +127,8 @@
           @reloadWhenEdit="reloadwhenSave"
         />
         <Transaction
-          :transactions="transactions"
           v-if="stateRenderComponent == 'categories'"
+          :transactions="transactions"
         />
       </div>
     </div>
@@ -141,7 +141,7 @@
 import Nav from "@/components/Nav.vue";
 import NavBottom from "@/components/NavBottom.vue";
 import Card from "@/components/Card.vue";
-import Transaction from "@/views/Transaction.vue";
+import Transaction from "@/components/Transaction.vue";
 import Category from "@/views/Category.vue";
 const axios = require("axios").default;
 export default {
@@ -180,6 +180,7 @@ export default {
       this.transactions = this.transactions.filter((dt) => {
         return dt.categoryId == id;
       });
+      this.transactions.self = true 
     },
     logout() {
       localStorage.removeItem("user");

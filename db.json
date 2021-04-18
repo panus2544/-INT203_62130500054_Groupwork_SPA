@@ -9,6 +9,11 @@
       "id": 2,
       "name": "Delivery",
       "userId": 1
+    },
+    {
+      "name": "Nike",
+      "userId": 2,
+      "id": 3
     }
   ],
   "transactions": [
@@ -16,21 +21,21 @@
       "id": 1,
       "details": "กระเพาหมูกรอบ",
       "amount": 100,
-      "date": "Apr 18 2021 16:17:26 ",
+      "date": "2021-04-19 02:03:28 ",
       "categoryId": 1
     },
     {
       "id": 2,
       "details": "ก๋วยเตี๋ยว",
       "amount": 100,
-      "date": "Apr 18 2021 16:17:26",
+      "date": "2021-04-19 02:03:28",
       "categoryId": 1
     },
     {
       "id": 3,
       "details": "นั่ง Grab",
       "amount": 100,
-      "date": "Apr 18 2021 16:17:26",
+      "date": "2021-04-19 02:03:28",
       "categoryId": 2
     }
   ],
