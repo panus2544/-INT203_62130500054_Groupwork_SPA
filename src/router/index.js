@@ -30,6 +30,7 @@ const routes = [
         /* webpackChunkName: "login"*/ "../views/Authentication/Login.vue"
       ),
   },
+ 
 ];
 
 const router = createRouter({

@@ -43,29 +43,21 @@
         </svg>
       </li>
 
-      <li class="w-8 h-8 pr-20">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
+      <li class="pr-20 " @click="logout">
+        Logout
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    logout(){
+      this.$emit('whenlogout')
+    }
+  }
+};
 </script>
 
 <style></style>

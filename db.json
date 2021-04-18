@@ -1,50 +1,36 @@
 {
   "categories": [
     {
-      "id": 1,
-      "name": "Food",
-      "amount": 1,
-      "userId": 1
+      "name": "Fast Food",
+      "userId": 2,
+      "id": 1
     },
     {
       "id": 2,
       "name": "Delivery",
-      "amount": 2,
-      "userId": 1
-    },
-    {
-      "id": 3,
-      "name": "Other",
-      "amount": 1,
-      "userId": 1
-    },
-    {
-      "id": 4,
-      "name": "Lineman",
-      "amount": 1,
-      "userId": 1
-    },
-    {
-      "id": 5,
-      "name": "Grab",
-      "amount": 1,
       "userId": 1
     }
   ],
   "transactions": [
     {
       "id": 1,
-      "body": "some comment",
+      "details": "กระเพาหมูกรอบ",
+      "amount": 100,
+      "date": "Apr 18 2021 16:17:26 ",
       "categoryId": 1
     },
     {
       "id": 2,
-      "body": "some comment 2",
+      "details": "ก๋วยเตี๋ยว",
+      "amount": 100,
+      "date": "Apr 18 2021 16:17:26",
       "categoryId": 1
     },
     {
       "id": 3,
-      "body": "some comment 3",
+      "details": "นั่ง Grab",
+      "amount": 100,
+      "date": "Apr 18 2021 16:17:26",
       "categoryId": 2
     }
   ],
@@ -59,26 +45,5 @@
       "username": "user",
       "password": 254420
     }
-  ],
-  "timelines": [
-    {
-      "id": 1,
-      "userId": 1
-    },
-    {
-      "id": 2,
-      "userId": 1
-    }
-  ],
-  "timelinedetails": [
-    {
-      "id": 1,
-      "userId": 1
-    },
-    {
-      "id": 2,
-      "userId": 1
-    }
-  ],
-  "db": []
+  ]
 }

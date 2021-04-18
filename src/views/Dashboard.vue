@@ -1,15 +1,12 @@
 <template>
   <div class="flex w-screen h-screen overflow-x-hidden bg-gray-200">
     <div class="flex flex-col flex-1">
-      <Nav />
+      <Nav @whenlogout="logout"/>
       <div class="w-full pb-24 mt-16 overflow-y-auto">
         <div
           class="flex flex-col justify-between w-full p-3 space-y-5 bg-white lg:space-y-0 lg:flex-row lg:items-center"
         >
           <div>
-            <!-- <h3 class="mb-2 text-4xl font-bold tracking-wide text-gray-700">
-              Manage
-            </h3> -->
             <div
               class="flex flex-col px-2 space-y-1 md:space-x-5 md:space-y-0 md:flex-row"
             >
@@ -20,65 +17,16 @@
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M12.23 15.5c-6.801 0-10.367-1.221-12.23-2.597v9.097h24v-8.949c-3.218 2.221-9.422 2.449-11.77 2.449zm1.77 2.532c0 1.087-.896 1.968-2 1.968s-2-.881-2-1.968v-1.032h4v1.032zm-14-8.541v-2.491h24v2.605c0 5.289-24 5.133-24-.114zm9-7.491c-1.104 0-2 .896-2 2v2h2v-1.5c0-.276.224-.5.5-.5h5c.276 0 .5.224.5.5v1.5h2v-2c0-1.104-.896-2-2-2h-6z"
-                  />
-                </svg>
-                <span>Full-time</span>
-              </span>
-              <span class="inline-flex items-center space-x-2 text-gray-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5 fill-current"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"
-                  />
-                </svg>
-                <span>Remote</span>
-              </span>
-              <span class="inline-flex items-center space-x-2 text-gray-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5 fill-current"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 16.947v1.053h-1v-.998c-1.035-.018-2.106-.265-3-.727l.455-1.644c.956.371 2.229.765 3.225.54 1.149-.26 1.384-1.442.114-2.011-.931-.434-3.778-.805-3.778-3.243 0-1.363 1.039-2.583 2.984-2.85v-1.067h1v1.018c.724.019 1.536.145 2.442.42l-.362 1.647c-.768-.27-1.617-.515-2.443-.465-1.489.087-1.62 1.376-.581 1.916 1.712.805 3.944 1.402 3.944 3.547.002 1.718-1.343 2.632-3 2.864z"
-                  />
-                </svg>
-                <span>$120k &ndash; $140k</span>
-              </span>
-              <span class="inline-flex items-center space-x-2 text-gray-500">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5 fill-current"
-                  viewBox="0 0 24 24"
-                >
-                  <path
                     d="M17 3v-2c0-.552.447-1 1-1s1 .448 1 1v2c0 .552-.447 1-1 1s-1-.448-1-1zm-12 1c.553 0 1-.448 1-1v-2c0-.552-.447-1-1-1-.553 0-1 .448-1 1v2c0 .552.447 1 1 1zm13 13v-3h-1v4h3v-1h-2zm-5 .5c0 2.481 2.019 4.5 4.5 4.5s4.5-2.019 4.5-4.5-2.019-4.5-4.5-4.5-4.5 2.019-4.5 4.5zm11 0c0 3.59-2.91 6.5-6.5 6.5s-6.5-2.91-6.5-6.5 2.91-6.5 6.5-6.5 6.5 2.91 6.5 6.5zm-14.237 3.5h-7.763v-13h19v1.763c.727.33 1.399.757 2 1.268v-9.031h-3v1c0 1.316-1.278 2.339-2.658 1.894-.831-.268-1.342-1.111-1.342-1.984v-.91h-9v1c0 1.316-1.278 2.339-2.658 1.894-.831-.268-1.342-1.111-1.342-1.984v-.91h-3v21h11.031c-.511-.601-.938-1.273-1.268-2z"
                   />
                 </svg>
-                <span>Closing on January 9, 2020</span>
+                <span>Date on January 9, 2020</span>
               </span>
             </div>
           </div>
           <div class="flex space-x-3">
             <button
-              class="md:flex hidden items-center text-gray-500 space-x-2 border border-gray-400 px-4 py-1.5 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-4 h-4 fill-current"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M19.769 9.923l-12.642 12.639-7.127 1.438 1.438-7.128 12.641-12.64 5.69 5.691zm1.414-1.414l2.817-2.82-5.691-5.689-2.816 2.817 5.69 5.692z"
-                />
-              </svg>
-              <span class="text-sm font-semibold uppercase">Edit</span>
-            </button>
-            <button
+              @click="view()"
               class="md:flex hidden items-center text-gray-500 space-x-2 border border-gray-400 px-4 py-1.5 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700"
             >
               <svg
@@ -90,29 +38,31 @@
                   d="M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z"
                 />
               </svg>
-              <span class="text-sm font-semibold uppercase">View</span>
+              <span class="text-sm font-semibold uppercase">All</span>
             </button>
             <button
+              @click="stateRenderComponent = 'addCategory'"
               class="flex items-center text-white space-x-1.5 px-4 py-1.5 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-600"
             >
               <svg
-                class="w-5 h-5"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
                 <path
-                  fill-rule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clip-rule="evenodd"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span class="text-sm font-semibold uppercase">publish</span>
+              <span class="text-sm font-semibold uppercase">Add Category</span>
             </button>
             <div class="relative">
               <button
-                @click="state = !state"
+                @click="stateButtonMore = !stateButtonMore"
                 class="flex md:hidden items-center text-gray-500 space-x-2 border border-gray-400 px-4 py-1.5 rounded-lg hover:bg-gray-100 focus:outline-none"
               >
                 <span class="text-sm font-semibold uppercase">More</span>
@@ -127,26 +77,11 @@
                 </svg>
               </button>
               <div
-                v-show="state"
+                v-show="stateButtonMore"
                 class="absolute right-0 overflow-hidden bg-white rounded-lg shadow-xl w-36 top-full"
               >
                 <a
-                  href="#"
-                  class="flex items-center px-4 py-2 space-x-2 text-gray-500 md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 h-4 fill-current"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19.769 9.923l-12.642 12.639-7.127 1.438 1.438-7.128 12.641-12.64 5.69 5.691zm1.414-1.414l2.817-2.82-5.691-5.689-2.816 2.817 5.69 5.692z"
-                    />
-                  </svg>
-                  <span class="text-sm font-semibold uppercase">Edit</span>
-                </a>
-                <a
-                  href="#"
+                  @click="view()"
                   class="flex items-center px-4 py-2 space-x-2 text-gray-500 md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700"
                 >
                   <svg
@@ -158,19 +93,43 @@
                       d="M6.188 8.719c.439-.439.926-.801 1.444-1.087 2.887-1.591 6.589-.745 8.445 2.069l-2.246 2.245c-.644-1.469-2.243-2.305-3.834-1.949-.599.134-1.168.433-1.633.898l-4.304 4.306c-1.307 1.307-1.307 3.433 0 4.74 1.307 1.307 3.433 1.307 4.74 0l1.327-1.327c1.207.479 2.501.67 3.779.575l-2.929 2.929c-2.511 2.511-6.582 2.511-9.093 0s-2.511-6.582 0-9.093l4.304-4.306zm6.836-6.836l-2.929 2.929c1.277-.096 2.572.096 3.779.574l1.326-1.326c1.307-1.307 3.433-1.307 4.74 0 1.307 1.307 1.307 3.433 0 4.74l-4.305 4.305c-1.311 1.311-3.44 1.3-4.74 0-.303-.303-.564-.68-.727-1.051l-2.246 2.245c.236.358.481.667.796.982.812.812 1.846 1.417 3.036 1.704 1.542.371 3.194.166 4.613-.617.518-.286 1.005-.648 1.444-1.087l4.304-4.305c2.512-2.511 2.512-6.582.001-9.093-2.511-2.51-6.581-2.51-9.092 0z"
                     />
                   </svg>
-                  <span class="text-sm font-semibold uppercase">View</span>
+                  <span class="text-sm font-semibold uppercase">All</span>
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <div class="grid grid-cols-4 gap-4 px-10">
+
+        <div
+          v-if="stateRenderComponent == 'card'"
+          class="grid grid-cols-4 gap-4 px-10"
+        >
           <Card
             v-for="category in categories"
             :key="category.id"
             :card="category"
+            @whenRender="renderTransactions"
+            @deleteCard="deleteCategory"
+            @editCard="editCategory"
           />
         </div>
+        <Transaction
+          v-if="stateRenderComponent == 'transaction'"
+          :transactions="transactions"
+        />
+        <Category
+          v-if="stateRenderComponent == 'addCategory'"
+          @reloadWhenSave="reloadwhenSave"
+        />
+        <Category
+          v-if="stateRenderComponent == 'editCategory'"
+          :editId="editId"
+          @reloadWhenEdit="reloadwhenSave"
+        />
+        <Transaction
+          :transactions="transactions"
+          v-if="stateRenderComponent == 'categories'"
+        />
       </div>
     </div>
 
@@ -182,36 +141,80 @@
 import Nav from "@/components/Nav.vue";
 import NavBottom from "@/components/NavBottom.vue";
 import Card from "@/components/Card.vue";
+import Transaction from "@/views/Transaction.vue";
+import Category from "@/views/Category.vue";
 const axios = require("axios").default;
 export default {
   components: {
     Nav,
     NavBottom,
     Card,
+    Transaction,
+    Category,
   },
   data() {
     return {
       categories: [],
-      state: false,
+      transactions: [],
+      stateButtonMore: false,
+      stateRenderComponent: "card",
+      editId: 0,
     };
   },
   methods: {
+    reloadwhenSave() {
+      this.stateRenderComponent = "card";
+      this.getCategory();
+    },
+    async view() {
+      if (this.stateRenderComponent == "card") {
+        this.stateRenderComponent = "transaction";
+        await this.getTransaction();
+      } else {
+        this.stateRenderComponent = "card";
+      }
+    },
+    async renderTransactions(id) {
+      await this.getTransaction();
+      this.stateRenderComponent = "categories";
+      this.transactions = this.transactions.filter((dt) => {
+        return dt.categoryId == id;
+      });
+    },
     logout() {
       localStorage.removeItem("user");
       this.$router.push({ name: "Login" });
     },
-    async getData() {
-      await axios.get("http://localhost:5000/categories").then((respone) => {
-        console.log(
-          "🚀 ~ file: About.vue ~ line 19 ~ getPosts ~ data",
-          respone
-        );
-        this.categories = respone.data;
-      });
+    async getCategory() {
+      await axios
+        .get("http://localhost:5000/categories?_embed=transactions")
+        .then((respone) => {
+          this.categories = respone.data;
+        });
+    },
+    async getTransaction() {
+      await axios
+        .get("http://localhost:5000/transactions?_expand=category")
+        .then((respone) => {
+          this.transactions = respone.data;
+        });
+    },
+    async deleteCategory(id) {
+      await axios
+        .delete("http://localhost:5000/categories/" + id)
+        .then((respone) => {
+          this.transactions = respone.data;
+          this.getCategory();
+        });
+    },
+    editCategory(id) {
+      this.editId = id;
+      this.stateRenderComponent = "editCategory";
     },
   },
+  computed: {},
   created() {
-    this.getData();
+    this.getCategory();
   },
 };
 </script>
