@@ -23,6 +23,27 @@
           </svg>
           <span class="text-sm font-semibold uppercase">Add</span>
         </button>
+        <button
+          @click="stateUpdate=true"
+          v-show="datatransaction.self  && datatransaction.length != 0"
+          class="ml-5 flex items-start text-white space-x-1.5 px-4 py-1.5 rounded-lg hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-yellow-400"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span class="text-sm font-semibold uppercase">Edit</span>
+        </button>
       </div>
       <table
         v-if="datatransaction.length != 0"
