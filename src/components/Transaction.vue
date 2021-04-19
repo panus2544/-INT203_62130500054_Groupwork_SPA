@@ -72,7 +72,7 @@
             <td
               class="p-3 text-red-400 border cursor-pointer border-grey-light hover:bg-gray-100 hover:text-red-600 hover:font-medium"
             >
-              Delete
+              <button @click="deleted(transaction)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -110,8 +110,8 @@ export default {
   data() {
     return {
       datatransaction: this.transactions,
-      // categoryName: this.transactions[0].category.name,
       stateUpdate: false,
+      Itemdelete: [],
     };
   },
   props: {
@@ -159,7 +159,8 @@ export default {
             });
           console.log("edit successs");
         }
-        this.$emit("reloadWhenSave", "card");
+        this.stateUpdate = false;
+        this.$emit("reloadwhensave", "categories");
       });
     },
     async updateEvent(e, transaction) {
@@ -202,6 +203,15 @@ export default {
         parts[3] + "-" + months[parts[1]] + "-" + parts[2] + " " + parts[4]
       );
     },
+    async deleted(transaction) {
+      this.datatransaction.splice(this.datatransaction.indexOf(transaction), 1);
+      await axios
+        .delete("http://localhost:5000/transactions/" + transaction.id)
+        .then(() => {
+          console.log("deleted");
+        });
+      this.$emit("whendelete", "categories");
+    },
 
     async add() {
       let scoped = this;
@@ -238,7 +248,7 @@ export default {
           category: {
             name: categoryres.data.name,
           },
-          categoryId: categoryres.data.categoryId,
+          categoryId: categoryres.data.id,
           stateDb: "add",
         });
       }

@@ -127,7 +127,8 @@
           @reloadWhenEdit="reloadwhenSave"
         />
         <Transaction
-          @reloadWhenSave="reloadwhenSave"
+          @reloadwhensave="reloadwhenSave"
+          @whendelete="reloadwhenSave"
           v-if="stateRenderComponent == 'categories'"
           :transactions="transactions"
         />
