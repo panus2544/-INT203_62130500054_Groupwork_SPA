@@ -84,7 +84,7 @@ export default {
         await axios
           .put("http://localhost:5000/categories/" + this.editId, data)
           .then(() => {
-            this.$emit("reloadWhenEdit")
+            this.$emit("reloadWhenEdit","card")
           });
       } else {
         let data = {};
@@ -92,7 +92,7 @@ export default {
         data.name = this.name;
         data.userId = user.id;
         await axios.post("http://localhost:5000/categories/", data).then(() => {
-          this.$emit("reloadWhenSave")
+          this.$emit("reloadWhenSave","card")
         });
       }
     },

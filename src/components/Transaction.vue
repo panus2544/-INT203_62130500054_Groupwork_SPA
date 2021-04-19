@@ -52,20 +52,21 @@
             </td>
             <td
               class="p-3 truncate border border-grey-light hover:bg-gray-100"
-              contenteditable="true"
+              @blur.self="updateEvent($event, transaction)"
+              :contenteditable="stateUpdate"
+              id="details"
             >
               {{ transaction.details }}
             </td>
             <td
               class="p-3 truncate border border-grey-light hover:bg-gray-100"
-              contenteditable="true"
+              @blur.self="updateEvent($event, transaction)"
+              :contenteditable="stateUpdate"
+              id="amount"
             >
               {{ transaction.amount }}
             </td>
-            <td
-              class="p-3 truncate border border-grey-light hover:bg-gray-100"
-              contenteditable="true"
-            >
+            <td class="p-3 truncate border border-grey-light hover:bg-gray-100">
               {{ transaction.date }}
             </td>
             <td
@@ -77,23 +78,110 @@
         </tbody>
       </table>
       <h1 v-else class="my-16 text-5xl">No Data</h1>
+      <div class="flex justify-start" v-show="stateUpdate">
+        <button
+          @click="updateAll"
+          class="flex items-start mx-auto text-white space-x-1.5 px-4 py-1.5 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-green-600"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span class="text-sm font-semibold uppercase">UpdateAll</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
+const axios = require("axios").default;
 export default {
   data() {
     return {
       datatransaction: this.transactions,
-      categoryName: this.transactions[0].category.name,
+      // categoryName: this.transactions[0].category.name,
+      stateUpdate: false,
     };
   },
   props: {
     transactions: [],
   },
   computed: {},
+  mounted() {
+    console.log(this.datatransaction);
+  },
   methods: {
+    async updateAll() {
+      this.datatransaction.forEach(async (element) => {
+        if (element.stateDb == "add") {
+          let dataAdd = {
+            details: element.details,
+            amount: element.amount,
+            date: element.date,
+            categoryId: element.categoryId,
+          };
+          await axios
+            .post("http://localhost:5000/transactions", dataAdd)
+            .then((respone) => {
+              console.log(
+                "🚀 ~ file: About.vue ~ line 19 ~ getPosts ~ data",
+                respone
+              );
+            });
+        }
+
+        if (element.stateDb == "edit") {
+          let dataEdit = {
+            id: element.id,
+            details: element.details,
+            amount: element.amount,
+            date: element.date,
+            categoryId: element.categoryId,
+          };
+          await axios
+            .put("http://localhost:5000/transactions/" + element.id, dataEdit)
+            .then((respone) => {
+              console.log(
+                "🚀 ~ file: About.vue ~ line 19 ~ getPosts ~ data",
+                respone
+              );
+            });
+          console.log("edit successs");
+        }
+        this.$emit("reloadWhenSave", "card");
+      });
+    },
+    async updateEvent(e, transaction) {
+      e.preventDefault();
+
+      if (e.target.id == "details") {
+        transaction.details = e.target.innerText;
+      }
+
+      if (e.target.id == "amount") {
+        transaction.amount = parseInt(e.target.innerText);
+      }
+      this.datatransaction.forEach((dt) => {
+        if (!dt.stateDb) {
+          dt.stateDb = "edit";
+        }
+      });
+      console.log(
+        "🚀 ~ file: Transaction.vue ~ line 188 ~ add ~ dataUpdate Before",
+        this.datatransaction
+      );
+    },
     convertDate(d) {
       var parts = d.split(" ");
       var months = {
@@ -115,24 +203,51 @@ export default {
       );
     },
 
-    add() {
-      var d = "" + new Date();
+    async add() {
       let scoped = this;
-      scoped.datatransaction.push({
-        id: 4,
-        details: "",
-        amount: 0,
-        date: this.convertDate(d),
-        category: {
-          name: scoped.categoryName,
-        },
-      });
+      let categoryres = await axios.get(
+        "http://localhost:5000/categories/" + scoped.datatransaction.categoryId
+      );
+
+      this.stateUpdate = true;
+      var d = "" + new Date();
+      if (scoped.datatransaction.length == 0) {
+        scoped.datatransaction.push({
+          id: 1,
+          details: "",
+          amount: 0,
+          date: this.convertDate(d),
+          category: {
+            name: categoryres.data.name,
+          },
+          categoryId: categoryres.data.id,
+          stateDb: "add",
+        });
+      } else {
+        scoped.datatransaction.push({
+          id:
+            Math.max.apply(
+              Math,
+              scoped.datatransaction.map(function (o) {
+                return o.id;
+              })
+            ) + 1,
+          details: "",
+          amount: 0,
+          date: this.convertDate(d),
+          category: {
+            name: categoryres.data.name,
+          },
+          categoryId: categoryres.data.categoryId,
+          stateDb: "add",
+        });
+      }
     },
   },
 };
 </script>
-  
-  <style scoped>
+
+<style scoped>
 html,
 body {
   height: 100%;

@@ -1,7 +1,7 @@
 <template>
   <div class="flex w-screen h-screen overflow-x-hidden bg-gray-200">
     <div class="flex flex-col flex-1">
-      <Nav @whenlogout="logout"/>
+      <Nav @whenlogout="logout" />
       <div class="w-full pb-24 mt-16 overflow-y-auto">
         <div
           class="flex flex-col justify-between w-full p-3 space-y-5 bg-white lg:space-y-0 lg:flex-row lg:items-center"
@@ -127,6 +127,7 @@
           @reloadWhenEdit="reloadwhenSave"
         />
         <Transaction
+          @reloadWhenSave="reloadwhenSave"
           v-if="stateRenderComponent == 'categories'"
           :transactions="transactions"
         />
@@ -162,8 +163,8 @@ export default {
     };
   },
   methods: {
-    reloadwhenSave() {
-      this.stateRenderComponent = "card";
+    reloadwhenSave(render) {
+      this.stateRenderComponent = render;
       this.getCategory();
     },
     async view() {
@@ -180,7 +181,9 @@ export default {
       this.transactions = this.transactions.filter((dt) => {
         return dt.categoryId == id;
       });
-      this.transactions.self = true 
+      this.transactions.self = true;
+      this.transactions.categoryId = id;
+      return this.transactions;
     },
     logout() {
       localStorage.removeItem("user");
